@@ -46,6 +46,18 @@ public enum Variable {
 		}
 	},
 	
+	ONLINE_BUNGEE("{online:" + server + "}") {
+		public String getReplacement(Player executor) {
+			out.writeUTF("PlayerCount");
+			out.writeUTF(server);
+			
+			String thing = in.readUTF(); // Name of server, as given in the arguments
+			int playercount = in.readInt();
+			
+			return String.valueOf(playercount);
+		}
+	},
+	
 	WORLD("{world}") {
 		public String getReplacement(Player executor) {
 			return executor.getWorld().getName();
