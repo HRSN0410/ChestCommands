@@ -59,6 +59,10 @@ public class ChestCommands extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
+		
+		this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+    		this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+		
 		if (instance != null) {
 			getLogger().warning("Please do not use /reload or plugin reloaders. Do \"/cc reload\" instead.");
 			return;
